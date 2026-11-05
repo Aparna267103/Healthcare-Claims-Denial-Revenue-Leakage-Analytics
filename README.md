@@ -63,6 +63,9 @@ Healthcare-Claims-Denial-Revenue-Leakage-Analytics/
 |   |-- visualize.py
 |   |-- eda.py
 |
+|-- powerbi/
+|   |-- measures.dax
+|
 |-- sql/
 |   |-- analysis_queries.sql
 |
@@ -112,7 +115,7 @@ Provides a high-level summary of claims performance and financial exposure.
 **Visualizations**
 - Denial Rate % by Payer
 - Denied Claims by CARC Code
-- Monthly Denial Rate Trend
+- Denial Rate Trend by Service Date (use `service_month` for a monthly trend)
 - Denied Exposure and Appeal Recovery by Payer, where supported by the data model
 
 ![Executive Overview](screenshots/Executive.png)
@@ -140,7 +143,7 @@ Tracks appeal outcomes and the recovery of denied amounts.
 - Appeal Recovered
 
 **Visualizations**
-- Appeal Success Rate by Payer
+- Appeal Submission Rate by Payer
 - Denial Volume vs. Exposure by Denial Reason
 - Appeal status and recovered amount by Claim ID
 
@@ -216,10 +219,9 @@ Run these commands only if the corresponding scripts exist in your repository:
 python src/generate_data.py
 python src/pipeline.py
 python src/visualize.py
+# Alternative entry point for the same charts:
+python src/eda.py
 ```
-
-`src/data_cleaning.py` is also available as an alias for `src/pipeline.py`.
-`src/eda.py` is also available as an alias for `src/visualize.py`.
 
 Expected outputs, depending on the implemented scripts:
 
