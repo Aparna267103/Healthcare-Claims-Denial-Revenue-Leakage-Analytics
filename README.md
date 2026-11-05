@@ -185,8 +185,9 @@ Suggested focus areas include high denied exposure, frequent denial reasons, unr
 Clone the repository:
 
 ```bash
-git clone <repository-url>
-cd Healthcare-Claims-Fraud-Anomaly-Detection-System
+git clone https://github.com/Aparna267103/Healthcare-Claims-Denial-Revenue-Leakage-Analytics.git
+
+cd Healthcare-Claims-Denial-Revenue-Leakage-Analytics
 ```
 
 Create and activate a virtual environment on Windows:
