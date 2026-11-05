@@ -55,6 +55,8 @@ and Python Visualizations
 ```text
 Healthcare-Claims-Denial-Revenue-Leakage-Analytics/
 |
+|-- PowerBi charts.pbix
+|
 |-- src/
 |   |-- generate_data.py
 |   |-- pipeline.py
@@ -89,6 +91,8 @@ Healthcare-Claims-Denial-Revenue-Leakage-Analytics/
 ## Power BI Dashboard
 
 The dashboard is organized into four pages to provide executive insights, denial root-cause analysis, appeal recovery monitoring, and operational prioritization.
+
+[Open the Power BI report](./PowerBi%20charts.pbix) in Power BI Desktop. The report uses `outputs/claims_processed.csv`; run the data pipeline first, then refresh the report if the CSV has changed.
 
 ## Power BI Dashboard Screenshots
 
