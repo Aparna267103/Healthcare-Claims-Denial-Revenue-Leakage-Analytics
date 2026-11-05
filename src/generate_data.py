@@ -51,6 +51,7 @@ df = pd.DataFrame({
     "paid_amount": paid,
     "carc_code": status_codes,
     "denial_reason": [reason[x] for x in status_codes],
+    "appeal_eligible": appeal_eligible,
     "appeal_submitted": appeal_submitted,
     "appeal_won": appeal_won,
     "appeal_recovered_amount": recovered,
