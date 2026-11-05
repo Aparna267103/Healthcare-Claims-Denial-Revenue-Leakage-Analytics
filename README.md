@@ -1,4 +1,4 @@
-# Healthcare Claims Fraud Anomaly Detection System
+# Healthcare-Claims-Denial-Revenue-Leakage-Analytics
 
 An end-to-end healthcare claims analytics project built using **Python, Pandas, SQL, and Power BI**. This project uses synthetic healthcare claims data to analyze denial patterns, identify revenue leakage risks, and track appeal recovery.
 
