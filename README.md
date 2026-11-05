@@ -53,7 +53,7 @@ and Python Visualizations
 ## Repository Structure
 
 ```text
-Healthcare-Claims-Fraud-Anomaly-Detection-System/
+Healthcare-Claims-Denial-Revenue-Leakage-Analytics/
 |
 |-- src/
 |   |-- generate_data.py
