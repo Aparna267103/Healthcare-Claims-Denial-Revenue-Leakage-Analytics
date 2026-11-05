@@ -58,7 +58,9 @@ Healthcare-Claims-Denial-Revenue-Leakage-Analytics/
 |-- src/
 |   |-- generate_data.py
 |   |-- pipeline.py
+|   |-- data_cleaning.py
 |   |-- visualize.py
+|   |-- eda.py
 |
 |-- sql/
 |   |-- analysis_queries.sql
@@ -212,6 +214,9 @@ python src/generate_data.py
 python src/pipeline.py
 python src/visualize.py
 ```
+
+`src/data_cleaning.py` is also available as an alias for `src/pipeline.py`.
+`src/eda.py` is also available as an alias for `src/visualize.py`.
 
 Expected outputs, depending on the implemented scripts:
 
