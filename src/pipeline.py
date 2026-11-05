@@ -31,14 +31,20 @@ def main():
         df[col] = pd.to_numeric(df[col], errors="coerce").fillna(0).clip(lower=0)
     for col in ["appeal_submitted", "appeal_won"]:
         df[col] = df[col].astype(str).str.lower().map({"true": True, "false": False, "1": True, "0": False}).fillna(False)
+    if "appeal_eligible" in df.columns:
+        df["appeal_eligible"] = df["appeal_eligible"].astype(str).str.lower().map(
+            {"true": True, "false": False, "1": True, "0": False}
+        ).fillna(False)
 
     df["carc_code"] = df["carc_code"].fillna("").astype(str).str.strip().str.upper()
     df["denied_flag"] = df["carc_code"].ne("")
+    if "appeal_eligible" not in df.columns:
+        df["appeal_eligible"] = df["denied_flag"] & df["appeal_submitted"]
     df["denied_amount"] = np.where(df["denied_flag"], (df["billed_amount"] - df["paid_amount"]).clip(lower=0), 0)
     df["potential_exposure"] = df["denied_amount"]
     df["net_unrecovered_amount"] = (df["denied_amount"] - df["appeal_recovered_amount"]).clip(lower=0)
     df["service_month"] = df["service_date"].dt.to_period("M").astype(str)
-    df["appeal_eligible_flag"] = df["denied_flag"] & df["appeal_submitted"]
+    df["appeal_eligible_flag"] = df["denied_flag"] & df["appeal_eligible"]
     df["appeal_won_flag"] = df["appeal_submitted"] & df["appeal_won"]
 
     # Quality checks; do not silently deduplicate claims without a business rule.
@@ -52,7 +58,10 @@ def main():
     df[df["data_quality_issue"].ne("")].to_csv(OUT / "data_quality_issues.csv", index=False)
 
     engine = create_engine(f"sqlite:///{(OUT / 'claims_analyzer.db').as_posix()}")
-    df.to_sql("claims", engine, if_exists="replace", index=False)
+    try:
+        df.to_sql("claims", engine, if_exists="replace", index=False)
+    finally:
+        engine.dispose()
     print(f"Processed {len(df):,} rows")
     print(f"Quality issues: {(df['data_quality_issue'] != '').sum():,}")
     print(f"SQLite database: {OUT / 'claims_analyzer.db'}")
