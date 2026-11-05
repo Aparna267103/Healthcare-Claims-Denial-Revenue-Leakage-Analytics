@@ -58,7 +58,6 @@ Healthcare-Claims-Denial-Revenue-Leakage-Analytics/
 |-- src/
 |   |-- generate_data.py
 |   |-- pipeline.py
-|   |-- data_cleaning.py
 |   |-- visualize.py
 |   |-- eda.py
 |
