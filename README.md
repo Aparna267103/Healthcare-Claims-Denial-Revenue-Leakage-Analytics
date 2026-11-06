@@ -81,9 +81,9 @@ Healthcare-Claims-Denial-Revenue-Leakage-Analytics/
 |
 |-- screenshots/
 |   |-- Executive.png
-|   |-- Root_Cause.png
+|   |-- Root Cause.png
 |   |-- Recovery.png
-|   |-- Action_Center.png
+|   |-- Action Center.png
 |
 |-- requirements.txt
 |-- README.md
@@ -130,7 +130,7 @@ Explores denial patterns across payer, provider specialty, procedure, and denial
 - Claim-level details by payer, plan, CPT, and CARC
 - Drill-through to claim details, if configured
 
-![Denial Root Cause](screenshots/Root_Cause.png)
+![Denial Root Cause](screenshots/Root%20Cause.png)
 
 ### 3. Appeals & Recovery
 
@@ -155,7 +155,7 @@ Supports prioritization of claims requiring operational review.
 
 Suggested focus areas include high denied exposure, frequent denial reasons, unresolved appeals, and payer or specialty patterns that warrant investigation.
 
-![Action Center](screenshots/Action_Center.png)
+![Action Center](screenshots/Action%20Center.png)
 
 ## Metric Definitions
 
@@ -198,16 +198,19 @@ git clone https://github.com/Aparna267103/Healthcare-Claims-Denial-Revenue-Leaka
 cd Healthcare-Claims-Denial-Revenue-Leakage-Analytics
 ```
 
-Create and activate a virtual environment on Windows:
+Create and activate a virtual environment on Windows (PowerShell):
 
-```bash
+```powershell
 python -m venv .venv
-.venv\Scripts\activate
+.\.venv\Scripts\Activate.ps1
 ```
+
+If PowerShell blocks activation, allow it for the current terminal with
+`Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass`, then activate again.
 
 Install dependencies:
 
-```bash
+```powershell
 pip install -r requirements.txt
 ```
 
@@ -244,15 +247,14 @@ Run the queries in `sql/analysis_queries.sql` against the generated database.
 
 ## Key Insights
 
-Use this section to summarize findings from your completed dashboard, such as:
+The following findings are calculated from the included 5,000-row synthetic claims dataset. They are illustrative and should not be interpreted as real payer or provider performance.
 
-- Payers with comparatively high denial rates
-- CARC codes contributing the most denial volume
-- Specialties or CPT codes with high denied exposure
-- Amounts recovered through appeals
-- Areas recommended for further operational review
+- **Overall denials:** 1,601 of 5,000 claims were denied (32.02%), with denied exposure of **$379,341.64**.
+- **CARC driver:** CO-16 (Missing information) was the most frequent denial reason, with **471 claims** (29.42% of denials) and **$109,065.94** in denied exposure.
+- **Payer variation:** CedarCare had the highest denial rate at **34.82%** (351 of 1,008 claims); BlueRiver had the lowest at **29.17%** (292 of 1,001 claims).
+- **Appeal recovery:** Recorded appeal recoveries totaled **$42,573.67**, equal to **11.22%** of denied exposure. Net unrecovered exposure was **$336,767.97**.
 
-*Add findings calculated from your actual dataset rather than assuming example values are universal results.*
+These are descriptive results from this generated sample, not causal findings or benchmarks.
 
 ## Future Improvements
 
